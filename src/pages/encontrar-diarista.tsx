@@ -1,6 +1,8 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import VerificarProfissionais from '@partials/encontrar-diarista/_verificar-profissionais';
+import Contratacao from '@partials/encontrar-diarista/_contratacao';
+import useEncontrarDiarista from 'data/hooks/pages/useEncontrarDiarista.page';
 //import {} from '@styles/pages/encontrar-diarista.styled';
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -12,7 +14,18 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const EncontrarDiarista: React.FC = () => {
-  return <VerificarProfissionais />;
+  const { podeContratar, setPodeContratar } = useEncontrarDiarista();
+  return (
+    <div>
+      {!podeContratar ? (
+        <VerificarProfissionais
+          onContratarProfissional={() => setPodeContratar(true)}
+        />
+      ) : (
+        <Contratacao />
+      )}
+    </div>
+  );
 };
 
 export default EncontrarDiarista;

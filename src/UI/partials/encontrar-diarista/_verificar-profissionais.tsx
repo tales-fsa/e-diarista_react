@@ -11,7 +11,13 @@ import {
   ProfissionaisPaper,
 } from './_verificar-profissionais.styled';
 
-const VerificarProfissionais: React.FC<PropsWithChildren> = () => {
+interface VerificarProfissionaisProps {
+  onContratarProfissional: () => void;
+}
+
+const VerificarProfissionais: React.FC<VerificarProfissionaisProps> = ({
+  onContratarProfissional,
+}) => {
   const {
     cep,
     setCep,
@@ -27,24 +33,24 @@ const VerificarProfissionais: React.FC<PropsWithChildren> = () => {
     <>
       <SafeEnvironment />
       <PageTitle
-        title='Conheça os profissionais'
-        subtitle='Preencha seu endereço e veja todos os profissionais da sua localidade'
+        title="Conheça os profissionais"
+        subtitle="Preencha seu endereço e veja todos os profissionais da sua localidade"
       />
       <Container sx={{ mb: 10 }}>
         <FormElementContainer>
           <TextFieldMask
-            mask='99.999-999'
-            label='Digite seu CEP'
+            mask="99.999-999"
+            label="Digite seu CEP"
             value={cep}
             onChange={(event) => setCep(event.target.value)}
             fullWidth
           />
 
-          {error && <Typography color='error'>Cep não encontrado</Typography>}
+          {error && <Typography color="error">Cep não encontrado</Typography>}
 
           <Button
-            variant='contained'
-            color='secondary'
+            variant="contained"
+            color="secondary"
             disabled={!cepValido || carregando}
             sx={{ width: '220px' }}
             onClick={() => buscarProfissionais(cep)}
@@ -72,8 +78,8 @@ const VerificarProfissionais: React.FC<PropsWithChildren> = () => {
               <Container sx={{ textAlign: 'center' }}>
                 {diaristasRestantes > 0 && (
                   <Typography
-                    variant='body2'
-                    color='textSecondary'
+                    variant="body2"
+                    color="textSecondary"
                     sx={{ mt: 5 }}
                   >
                     ...e mais {diaristasRestantes}
@@ -83,13 +89,18 @@ const VerificarProfissionais: React.FC<PropsWithChildren> = () => {
                   </Typography>
                 )}
 
-                <Button variant='contained' color='secondary' sx={{ mt: 5 }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{ mt: 5 }}
+                  onClick={onContratarProfissional}
+                >
                   Contratar um(a) profissional
                 </Button>
               </Container>
             </ProfissionaisPaper>
           ) : (
-            <Typography align='center' color='textPrimary'>
+            <Typography align="center" color="textPrimary">
               Ainda não temos nenhum(a) diarista na sua região.
             </Typography>
           ))}
