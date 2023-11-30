@@ -1,4 +1,5 @@
 import { ApiLinksInterface } from './ApiLinksInterface';
+import { UserInterface } from './UserInteface';
 
 export interface DiariaInterface {
   id?: number;
@@ -7,8 +8,8 @@ export interface DiariaInterface {
   hora_termino?: string;
   tempo_atendimento: number;
   preco: number;
-
-  logradouro?: string;
+  status?: number;
+  logradouro: string;
   bairro: string;
   complemento: string;
   cep: string;
@@ -29,4 +30,24 @@ export interface DiariaInterface {
   servico: number;
   nome_servico: string;
   links: ApiLinksInterface[];
+
+  cliente?: UserInterface;
+  diarista?: UserInterface;
 }
+
+export enum DiariaStatus {
+  SEM_PAGAMENTO = 1,
+  PAGO = 2,
+  COMFIRMADO = 3,
+  CONCLUIDO = 4,
+  CANCELADO = 5,
+  AVALIADO = 6,
+  TRANSFERIDO = 7,
+}
+
+export type TextColor =
+  | 'success'
+  | 'error'
+  | 'warning'
+  | 'primary'
+  | 'secondary';

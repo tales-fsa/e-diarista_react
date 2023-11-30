@@ -9,9 +9,7 @@ import Head from 'next/head';
 import React, { useContext } from 'react';
 import { MainProvider } from 'data/contexts/MainContext';
 import { UserContext } from 'data/contexts/UserContext';
-import useRouterGuard, {
-  privateRoutes,
-} from 'data/hooks/pages/useRouterGuard.hook';
+import useRouterGuard, { privateRoutes } from 'data/hooks/useRouterGuard.hook';
 import { LoginService } from 'data/services/LoginService';
 
 function App({ Component, pageProps }: AppProps) {

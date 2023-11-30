@@ -1,6 +1,7 @@
+import { CidadeInterface } from 'data/@types/EnderecoInterface';
 import { LocationService } from 'data/services/LocationService';
 import { useEffect, useState } from 'react';
-import { CidadeInterface } from '../components/inputs/UserForm/forms/EnderecoInterface';
+//import { CidadeInterface } from '../components/inputs/UserForm/forms/EnderecoInterface';
 
 export default function useCities(estado: string): CidadeInterface[] {
   const [listaCidades, setListaCidades] = useState<CidadeInterface[]>([]);

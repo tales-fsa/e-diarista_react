@@ -1,6 +1,6 @@
 import { FormValues } from 'data/@types/forms/FormValue';
 import { UserContext } from 'data/contexts/UserContext';
-import useCities from 'data/hooks/pages/useCities';
+import useCities from 'data/hooks/useCities';
 import { LocationService } from 'data/services/LocationService';
 import { useContext, useEffect, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
