@@ -47,7 +47,7 @@ const theme = createTheme({
     fontFamily: 'Poppins, Roboto, sans-serif',
   },
   shape: {
-    borderRadius: 3,
+    borderRadius: 5,
   },
   components: {
     MuiButton: {
@@ -78,6 +78,19 @@ const theme = createTheme({
         root: {
           boxShadow: '0px 0px 39px rgba(0, 0, 0, 0.05)',
         },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        InputLabelProps: {
+          required: false,
+        },
+        required: true,
+      },
+    },
+    MuiSelect: {
+      defaultProps: {
+        required: false,
       },
     },
   },
